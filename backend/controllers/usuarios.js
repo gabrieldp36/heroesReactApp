@@ -1,7 +1,7 @@
 const {response, request } = require('express');
 const  Usuario = require('../models/usuario');
 
-// Usuario Get.
+// Usuarios Get.
  const usuariosGet = async (req = request, res = response) => {
     const usuarioAuth = req.usuarioAuth;
     try {
@@ -17,12 +17,12 @@ const  Usuario = require('../models/usuario');
     };
 };
 
-// Usuario Get por Id.
+// Usuarios Get por Id.
 const usuariosById = async (req = request, res = response) => {
     const { id } = req.params;
     const usuarioAuth = req.usuarioAuth;
     try {
-        const unUsuario = await Usuario.findByPk(id);
+        const unUsuario = await Usuario.findByPk(id, { include: 'heroes' });
         if (!unUsuario) {
             res.status(404).json({error: `No se encontró un usuario con ID ${id}.`});
         } else {

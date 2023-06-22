@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../db/config/config.js')
 const bcrypt = require('bcrypt')
+const Heroe = require('./heroe');
 
 const Usuario = sequelize.define('usuarios', {
   nombre: {
@@ -36,6 +37,7 @@ const Usuario = sequelize.define('usuarios', {
   url_foto: {
     type: DataTypes.STRING,
     allowNull: true,
+    defaultValue: '',
     validate: {}
   },
   admin: {
@@ -71,5 +73,9 @@ const Usuario = sequelize.define('usuarios', {
 Usuario.prototype.verificar = function (password, passwordHash) {
   return bcrypt.compareSync(password, passwordHash);
 };
+
+// Relaciones.
+Usuario.hasMany(Heroe, {foreignKey: {name:'usuarioId', allowNull: false}, as: 'heroes', onDelete: 'CASCADE'});
+Heroe.belongsTo(Usuario, {foreignKey: {name:'usuarioId', allowNull: false}, as: 'usuario', onDelete: 'CASCADE'});
 
 module.exports = Usuario

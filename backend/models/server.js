@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const { sequelize, popular } = require('../db/config/config.js');
+const { sequelize, popular } = require('../db/config/config');
 const Usuario  = require('../models/usuario');
-//require('../models/relaciones.js');
+const Heroe = require('../models/heroe');
 
 class Server {
     constructor() {
@@ -11,6 +11,7 @@ class Server {
         this.paths = {
             auth: '/auth',
             usuarios: '/usuarios',
+            heroes: '/heroes'
         };
         // Conección a la base de datos.
         this.conectarDB();
@@ -24,7 +25,7 @@ class Server {
 
     conectarDB() {
         sequelize.sync().then( async () => {
-            await popular(Usuario);
+            await popular(Usuario, Heroe);
             console.log('Base de datos online.');
         }).catch((error) => {
             console.log('Error al sincronizar la base de datos:', error);
@@ -43,6 +44,7 @@ class Server {
     routes() {
         this.app.use( this.paths.auth, require('../routes/auth') );
         this.app.use( this.paths.usuarios, require('../routes/usuarios') );
+        this.app.use( this.paths.heroes, require('../routes/heroes') );
         this.app.get('/', (req, res) => {
             res.sendFile('../public/index.html');
         });
