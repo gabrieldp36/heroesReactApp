@@ -9,7 +9,7 @@ const  Usuario = require('../models/usuario');
             const data = await Usuario.findAll();
             res.json(data);
         } else {
-            res.status(401).json( {msg: 'Sólo un administrador puede utilizar este servicio'} );
+            res.status(401).json( {error: 'Sólo un administrador puede utilizar este servicio'} );
         };
     } catch (error) {
        console.log(error);
@@ -29,7 +29,7 @@ const usuariosById = async (req = request, res = response) => {
             if( usuarioAuth.admin || usuarioAuth.id == id) {
                 res.json(unUsuario);
             } else {
-                res.status(401).json( {msg: 'Se requiere el envío de un token propio'} );
+                res.status(401).json( {error: 'Se requiere el envío de un token propio'} );
             };
         };
     } catch (error) {
@@ -72,7 +72,7 @@ const usuariosPatch = async (req = request, res = response) => {
                 await Usuario.update(req.body, { where: { id }, individualHooks: true } );
                 res.json({ id: id });
             }  else {
-                res.status(401).json( {msg: 'Se requiere el envío de un token propio'} );
+                res.status(401).json( {error: 'Se requiere el envío de un token propio'} );
             };
         };
     } catch (error) {
@@ -94,7 +94,7 @@ const usuariosDelete = async (req = request, res = response) => {
             await Usuario.update({ estado:false }, { where: { id } } );
             res.json('ok');
         } else {
-            res.status(401).json( {msg: 'Se requiere el envío de un token propio'} );
+            res.status(401).json( {error: 'Se requiere el envío de un token propio'} );
         };
     } catch (error) {
         console.log(error);
@@ -115,7 +115,7 @@ const usuariosReactivar = async (req = request, res = response) => {
             await Usuario.update({ estado:true }, { where: { id } });
             res.json('ok');
         } else {
-            res.status(401).json( {msg: 'Sólo un administrador puede utilizar este servicio'} );
+            res.status(401).json( {error: 'Sólo un administrador puede utilizar este servicio'} );
         };
     } catch (error) {
         console.log(error);

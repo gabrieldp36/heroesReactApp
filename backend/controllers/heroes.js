@@ -16,7 +16,7 @@ const heroesGet = async (req = request, res = response) => {
 const heroesById = async (req = request, res = response) => {
     const { id } = req.params;
     try {
-        const unHeroe = await Heroe.findByPk(id, { include: 'usuario' });
+        const unHeroe = await Heroe.findByPk(id, { include: 'usuario', });
         if (!unHeroe) {
             return res.status(404).json({error: `No se encontró un héroe con ID ${id}.`});
         } 
@@ -56,7 +56,7 @@ const heroesPatch = async (req = request, res = response) => {
                 await Heroe.update(req.body, { where: { id } } );
                 res.json({ id: id });
             } else {
-                res.status(401).json( {msg: 'Se requiere el envío de un token propio'} );
+                res.status(401).json( {error: 'Se requiere el envío de un token propio'} );
             };
         };
     } catch (error) {
@@ -78,7 +78,7 @@ const heroesDelete = async (req = request, res = response) => {
             await unHeroe.destroy();
             res.json('ok');
         } else {
-            res.status(401).json( {msg: 'Se requiere el envío de un token propio'} );
+            res.status(401).json( {error: 'Se requiere el envío de un token propio'} );
         };
     } catch (error) {
         console.log(error);

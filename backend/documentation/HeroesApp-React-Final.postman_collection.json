@@ -1,0 +1,566 @@
+{
+	"info": {
+		"_postman_id": "bb7358f8-e392-4775-98fb-067dbf980ad2",
+		"name": "HeroesApp-React-Final",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17109440"
+	},
+	"item": [
+		{
+			"name": "Autenticación",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"admin@gmail.com\",\r\n    \"password\": \"A56456a9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Usuarios - Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/usuarios",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios - Get by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/usuarios/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios - Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Romina Blanc\", \r\n    \"correo\": \"test6a@gmail.com\",\r\n    \"password\": \"A56456a9\",\r\n    \"url_foto\": \"https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/usuarios",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios - Patch",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Romina Valente\", \r\n    \"correo\": \"test6@gmail.com\", \r\n    \"url_foto\": \"-\",\r\n    \"password\": \"A56456a9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/usuarios/15",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuarios",
+								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios - Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/usuarios/15",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuarios",
+								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios - Reactivar",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/usuarios/reactivar/15",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuarios",
+								"reactivar",
+								"15"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Heroes",
+			"item": [
+				{
+					"name": "Get Héroes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/heroes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"heroes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Héroe por Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/heroes/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"heroes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Héroe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"superhero\": \"She-Hulk\",\r\n    \"publisher\": \"DC-Comics\",\r\n    \"alter_ego\": \"Jennifer Walters\",\r\n    \"first_appearance\": \"The Savage She-Hulk #1\",\r\n    \"characters\": \"Jennifer Walters\",\r\n    \"habilities\": \"Fuerza, Velocidad, Agilidad, Reflejos, Resistencia Sobrehumanas.\",\r\n    \"alt_img\":  \"\",\r\n    \"assets_img\": false,\r\n    \"usuarioId\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/heroes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"heroes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Héroe",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"superhero\": \"Rogue\",\r\n    \"publisher\": \"Marvel Comics\",\r\n    \"alter_ego\": \"Anna Marie D'Ancanto\",\r\n    \"first_appearance\": \"Avengers Annual #10\",\r\n    \"characters\": \"Anna Marie D'Ancanto\",\r\n    \"habilities\": \"Absorción de fuerza vital, habilidades, recuerdos, personalidad y características físicas de otros a través del contacto piel con piel.\",\r\n    \"alt_img\":  \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/heroes/35",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"heroes",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Héroe",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/heroes/35",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"heroes",
+								"35"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Búsquedas",
+			"item": [
+				{
+					"name": "Buscar Héroes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/buscar?termino=garras&limite=5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "termino",
+									"value": "garras"
+								},
+								{
+									"key": "limite",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comentarios",
+			"item": [
+				{
+					"name": "Get Comentarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/comentarios",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comentarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comentario por Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/comentarios/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comentarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comentarios por Héroe",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/comentarios/heroe/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comentarios",
+								"heroe",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Comentario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"usuarioId\": 4,\r\n    \"heroeId\": 3,\r\n    \"descripcion\": \"El mejor superhéroe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/comentarios",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comentarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Comentario",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"usuarioId\": 4,\r\n    \"heroeId\": 3,\r\n    \"descripcion\": \"Un fantasma...\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/comentarios/15",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comentarios",
+								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Comentario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/comentarios/15",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comentarios",
+								"15"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

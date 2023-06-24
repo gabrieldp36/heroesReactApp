@@ -9,7 +9,7 @@ const Usuario = sequelize.define('usuarios', {
     allowNull: false,
     validate: {
       notNull: { msg: 'El campo nombre es obligatorio' },
-      notEmpty: { msg: 'El campo nombre es obligatorio' },
+      notEmpty: { msg: 'El campo nombre no puede estar vacío' },
     },
   },
   correo: {
@@ -18,7 +18,7 @@ const Usuario = sequelize.define('usuarios', {
     unique: { msg: 'El correo ya está registrado en la base de datos' },
     validate: {
       notNull: { msg: 'El campo correo es obligatorio' },
-      notEmpty: { msg: 'El campo correo es obligatorio' },
+      notEmpty: { msg: 'El campo correo no puede estar vacío' },
       isEmail: { msg: 'ingrese un correo válido' },
     },
   },
@@ -27,10 +27,10 @@ const Usuario = sequelize.define('usuarios', {
     allowNull: false,
     validate: {
       notNull: { msg: 'El campo password es obligatorio' },
-      notEmpty: { msg: 'El campo password es obligatorio' },
-      len: {
-        args: [8],
-        msg: 'La password debe contener al menos 8 caracteres',
+      notEmpty: { msg: 'El campo password no puede estar vacío' },
+      is: {
+        args: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+        msg: 'La contraseña debe contener mínimo 8 caractéres, al menos una letra mayúscula, una letra minúscula y un número'
       },
     },
   },

@@ -8,7 +8,7 @@ const Heroe = sequelize.define('heroes', {
       unique: { msg: 'Existe un héroe registrado en la base de datos con el mismo nombre' },
       validate: {
         notNull: { msg: 'El campo superhero es obligatorio' },
-        notEmpty: { msg: 'El campo superhero es obligatorio' },
+        notEmpty: { msg: 'El campo superhero no puede estar vacío' },
       },
     },
     publisher: {
@@ -16,7 +16,7 @@ const Heroe = sequelize.define('heroes', {
         allowNull: false,
         validate: {
           notNull: { msg: 'El campo publisher es obligatorio' },
-          notEmpty: { msg: 'El campo publisher es obligatorio' },
+          notEmpty: { msg: 'El campo publisher no puede estar vacío' },
         },
     },
     alter_ego: {
@@ -24,7 +24,7 @@ const Heroe = sequelize.define('heroes', {
         allowNull: false,
         validate: {
           notNull: { msg: 'El campo alter_ego es obligatorio' },
-          notEmpty: { msg: 'El campo alter_ego es obligatorio' },
+          notEmpty: { msg: 'El campo alter_ego no puede estar vacío' },
         },
     },
     first_appearance: {
@@ -44,7 +44,7 @@ const Heroe = sequelize.define('heroes', {
         allowNull: false,
         validate: {
           notNull: { msg: 'El campo habilities es obligatorio' },
-          notEmpty: { msg: 'El campo habilities es obligatorio' },
+          notEmpty: { msg: 'El campo habilities no puede estar vacío' },
         },
     },
     alt_img: {
