@@ -48,6 +48,55 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Verificar token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\": \"admin@gmail.com\",\r\n    \"password\": \"A56456a9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/verificar",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"verificar"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -105,13 +154,7 @@
 					"name": "Usuarios - Post",
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"nombre\": \"Romina Blanc\", \r\n    \"correo\": \"test6a@gmail.com\",\r\n    \"password\": \"A56456a9\",\r\n    \"url_foto\": \"https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80\"\r\n}",
