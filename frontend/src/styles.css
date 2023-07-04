@@ -1,0 +1,175 @@
+button {
+    box-shadow: none !important;
+}
+
+.displayCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.displayEnd {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.spanLogin {
+    text-decoration: underline;
+    color: #7b1fa2;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.userNameHidden {
+    display: initial;
+}
+
+/***************************SWEET ALERT**********************/
+
+.swal2-timer-progress-bar {
+    background-color: #7b1fa2 !important;
+}
+
+.swal2-icon.swal2-error {
+    border-color: #D92626 !important;
+    color: #D92626 !important;
+}
+
+.swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+    background-color: #D92626 !important;
+}
+
+.swal2-icon.swal2-warning {
+    border-color: #b98d0c !important;
+    color: #b98d0c !important;
+}
+
+/*************************PERFIL USUARIO*************************/
+.divIMGLogued {
+    display: flex; 
+    justify-content: flex-start; 
+    align-items:flex-end;
+    margin-left: 18px;
+}
+  
+.lineaVertical {
+    margin-right: 18px;
+    border-left: 1px solid var(--purple);
+    height: 45px;
+}
+  
+.navBarAvatar {
+    margin-right: 18px;
+    width: 48px;
+    height: 48px;
+    background-size: cover;
+    border-radius: 50%;
+    color: transparent !important;
+    cursor: pointer;
+}
+  
+.encabezadoPerfilUsuario {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+.divInfoUsario {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 40px;
+}
+  
+.divUserIMG {
+    padding-right: 24px;
+}
+  
+.userIMG {
+    height: 106px;
+    width: 106px;
+    background-size: cover;
+    /* background-position: center; */
+    border-radius: 50%;
+}
+  
+.nombrePerfil {
+    font-size: 36px !important;
+    font-weight: 500 !important;
+    margin-bottom: 2rem !important;
+}
+  
+.textoFechaIngreso {
+    margin-top: -18px;
+    font-size: 14.5px !important;
+    letter-spacing: 0.8px;
+    color: var(--gray80);
+}
+
+.spanInfo {
+    font-size: 12px;
+    color: #0d6efd;
+}
+
+.navBarUserName {
+    font-weight: bold !important;
+    color: #5dcebc !important;
+}
+
+.navBarAvatar {
+    margin-right: 18px;
+    width: 48px;
+    height: 48px;
+    background-size: cover;
+    border-radius: 50%;
+    color: transparent !important;
+    cursor: pointer;
+}
+
+.lineaVertical {
+    margin-right: 15px;
+    border-left: 1px solid #7b1fa2;
+    height: 45px;
+}
+
+.avatarImgHidden {
+    display: initial;
+}
+
+.tarjetaIcon {
+    width: 28px;
+    height: 28px;
+}
+
+.spanIconTarjeta {
+    font-size: 14px;
+    color: #7b1fa2;
+}
+
+.h2EliminarCuenta {
+    font-size: 28px !important;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.font15 {
+    font-size: 15px;
+}
+
+.spanError {
+    font-size: 15px;
+    color: #D92626;
+    margin-right: 4px;
+}
+
+@media (max-width: 991px) {
+    .avatarImgHidden {
+        display: none;
+    }
+    .navBarUserName{
+        font-weight: normal !important;
+        color:#0d6efd !important;
+    }
+}
