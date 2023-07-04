@@ -190,17 +190,6 @@ const popular = async (Usuario, Heroe, Comentario) => {
           usuarioId: 1
         },
         {
-          superhero: 'John C.',
-          publisher: 'DC Comics',
-          alter_ego: 'John Constantine',
-          first_appearance: 'The Saga of the Swamp Thing #37',
-          characters: 'John Constantine',
-          habilities: 'Gran hechicero, conocimiento de lo oculto, manipulación y astucia. Proyección astral, predicción, control sobre demonios, piromancia, invisibilidad, desplazamiento temporal y dimensional',
-          alt_img: '',
-          assets_img: 1,
-          usuarioId: 1
-        },
-        {
           superhero: 'Green Arrow',
           publisher: 'DC Comics',
           alter_ego: 'Oliver Queen',
@@ -231,7 +220,7 @@ const popular = async (Usuario, Heroe, Comentario) => {
           habilities: 'Artista marcial experto, estrategias de combate, tecnología avanzada y habilidad gimnástica',
           alt_img: '',
           assets_img: 1,
-          usuarioId: 1
+          usuarioId: 3
         },
         {
           superhero: 'Blue Beetle',
@@ -242,7 +231,7 @@ const popular = async (Usuario, Heroe, Comentario) => {
           habilities: 'Su armadura alienígena le concede la capacidad de volar, resistencia y durabilidad mejoradas, creación de armas y traducción de idiomas alienígenas',
           alt_img: '',
           assets_img: 1,
-          usuarioId: 1
+          usuarioId: 3
         },
         {
           superhero: 'Black Canary',
@@ -253,62 +242,7 @@ const popular = async (Usuario, Heroe, Comentario) => {
           habilities: 'Experta en artes marciales, grito ultrasónico, tenaz aviadora y motociclista, gran estratega, reflejos, resistencia y agilidad sobrehumanos',
           alt_img: '',
           assets_img: 1,
-          usuarioId: 1
-        },
-        {
-          superhero: 'Aquaman',
-          publisher: 'DC Comics',
-          alter_ego: 'Arthur Curry',
-          first_appearance: 'More Fun Comics #73',
-          characters: 'Arthur Curry',
-          habilities: 'Adaptación acuática-anfibia, telepatía, dominación psiónica de la vida marina, factor de curación, sentidos mejorados. Fuerza, agilidad, destreza, velocidad, resistencia y durabilidad sobrehumanas. Portador del tridente de Poseidón. Camuflaje submarino, creación y lanzamiento de rayos de agua dura',
-          alt_img: '',
-          assets_img: 1,
-          usuarioId: 1
-        },
-        {
-          superhero: 'Cyborg',
-          publisher: 'DC Comics',
-          alter_ego: 'Victor Stone',
-          first_appearance: 'DC Comics Presents #26',
-          characters: 'Victor Stone',
-          habilities: 'Intelecto nivel genio, experto en combate cuerpo a cuerpo, fuerza sobrehumana, inmersión en el ciberespacio, tecnopatía, capacidad de volar, sensores y armamento avanzado',
-          alt_img: '',
-          assets_img: 1,
-          usuarioId: 1
-        },
-        {
-          superhero: 'Catwoman',
-          publisher: 'DC Comics',
-          alter_ego: 'Selina Kyle',
-          first_appearance: 'DC Comics Batman #1',
-          characters: 'Selina Kyle',
-          habilities: 'Gran atleta, experta ladrona, agilidad propia de un gato, excelente combatiendo mano a mano. Utiliza un látigo como arma',
-          alt_img: '',
-          assets_img: 1,
-          usuarioId: 1
-        },
-        {
-          superhero: 'Raven',
-          publisher: 'DC Comics',
-          alter_ego: 'Rachel Roth',
-          first_appearance: 'DC Comics Presents #26',
-          characters: 'Rachel Roth',
-          habilities: 'Empatía, manipulación emocional, curación empática, telequinesis, teletransportación, vuelo, control de la energía mística y proyección astral',
-          alt_img: '',
-          assets_img: 1,
-          usuarioId: 1
-        },
-        {
-          superhero: 'Etrigan',
-          publisher: 'DC Comics',
-          alter_ego: 'Jason Blood',
-          first_appearance: 'DC Comics The Demon #1',
-          characters: 'Jason Blood',
-          habilities: 'Atributos físicos y poderes sensoriales sobrehumanos, capacidad de regeneración, poderes mágicos, precognición, telepatía, inmortalidad, puede lanzar llamas de fuego místico y tiene la capacidad de volar',
-          alt_img: '',
-          assets_img: 1,
-          usuarioId: 1
+          usuarioId: 3
         },
         {
           superhero: 'Spider Man',
@@ -420,94 +354,6 @@ const popular = async (Usuario, Heroe, Comentario) => {
           assets_img: 1,
           usuarioId: 2
         },
-        {
-          superhero: 'Dr. Strange',
-          publisher: 'Marvel Comics',
-          alter_ego: 'Stephen Strange',
-          first_appearance: 'Strange Tales #110',
-          characters: 'Stephen Strange, Stephen Sanders, Vincent Stevens',
-          habilities: 'Poderes místicos tales como teletransportación, generación de ilusiones y proyección de energía. Puede invocar las llamas de los Faltine, las bandas carmesíes de Cyttorak y el escudo de los serafin. Tiene la capacidad de practicar el viaje astral, durante el cual es invisible e intangible, y solo puede ser dañado mediante rituales místicos más elaborados, sin embargo su cuerpo es vulnerable por estar en un trance similar a la muerte. En caso de que su cuerpo físico muriese durante dicho viaje, Stephen estaría en forma astral por siempre. Posee una esperanza de vida prolongada por el Ankh de la Vida y es dueño del Ojo de Agamotto',
-          alt_img: '',
-          assets_img: 1,
-          usuarioId: 2
-        },
-        {
-          superhero: 'Black Widow',
-          publisher: 'Marvel Comics',
-          alter_ego: 'Natasha Romanoff',
-          first_appearance: 'Tales of Suspense #52',
-          characters: 'Natasha Romanoff, Natalie Rushman, Laura Matthers, Mary Farrell, Oktober, Yelena Belova',
-          habilities: 'Experta táctica, excelente combatiente cuerpo a cuerpo y agente secreta. Envejecimiento lento y sistema inmunológico súper mejorado. Tiradora experta y gran dominio de armas de filo e impacto',
-          alt_img: '',
-          assets_img: 1,
-          usuarioId: 2
-        },
-        {
-          superhero: 'Vision',
-          publisher: 'Marvel Comics',
-          alter_ego: 'Victor Shade',
-          first_appearance: 'Avengers #57',
-          characters: 'Victor Shade',
-          habilities: 'Habilidades físicas sobrehumanas, inteligencia superior, vuelo, control de densidad, intangibilidad, regeneración, proyección de energía solar, tecnopatía',
-          alt_img: '',
-          assets_img: 1,
-          usuarioId: 2
-        },
-        {
-          superhero: 'Star Lord',
-          publisher: 'Marvel Comics',
-          alter_ego: 'Peter Jason Quill',
-          first_appearance: 'Marvel Spotlight (vol. 2) #6',
-          characters: 'Peter Jason Quill',
-          habilities: 'Fuerza sobrehumana y vuelo (gracias a su traje). Arma elemental y tirador experto',
-          alt_img: '',
-          assets_img: 1,
-          usuarioId: 2
-        },
-        {
-          superhero: 'Ant Man',
-          publisher: 'Marvel Comics',
-          alter_ego: 'Scott Lang',
-          first_appearance: 'Tales to Astonish #27',
-          characters: 'Scott Lang, Hank Pym, Eric O\'Grady',
-          habilities: 'Cambios de tamaño desde casi microscópico a ~ 100 pies. Mantiene la fuerza del tamaño normal en estado reducido. Proyección de bioenergía, también conocida como Bio-Sting. Fuerza y agilidad',
-          alt_img: '',
-          assets_img: 1,
-          usuarioId: 2
-        },
-        {
-          superhero: 'Groot',
-          publisher: 'Marvel Comics',
-          alter_ego: 'Monarca Planeta X',
-          first_appearance: 'Tales to Astonish #13',
-          characters: 'Monarca Planeta X',
-          habilities: 'Succión de madera, resistente al fuego, capacidad de controlar los árboles, factor de curación acelerado y posee nivel intelectual de genio',
-          alt_img: 'https://i.pinimg.com/564x/ed/6a/ee/ed6aeeb286bcb02c85cf2ae92fb9be3d.jpg',
-          assets_img: 0,
-          usuarioId: 3
-        },
-        {
-          superhero: 'Storm',
-          publisher: 'Marvel Comics',
-          alter_ego: 'Ororo Iqadi Munroe',
-          first_appearance: 'Giant Size X-Men #1',
-          characters: 'Ororo Iqadi Munroe',
-          habilities: 'Capacidad psiónica de controlar todos los aspectos naturales del universo, entre ellos el clima. Puede manipular el viento, crear relámpagos y generar todo tipo de fenómenos climáticos naturales. Además, Storm puede reducir o elevar la temperatura de su ambiente. También puede manipular el viento para elevarse a sí misma y volar a altas velocidades. Es inmune a los efectos del clima, a los relámpagos, al calor extremo y al frío. Entre las manifestaciones más insólitas de su poder se encuentra la fusión de agentes contaminadores tóxicos atmosféricos en la niebla ácida o lluvias tóxicas',
-          alt_img: 'https://i.pinimg.com/564x/06/85/48/068548b2fb8b95a3d594473952908d6f.jpg',
-          assets_img: 0,
-          usuarioId: 3
-        },
-        {
-          superhero: 'Él - Magnus',
-          publisher: 'Marvel Comics',
-          alter_ego: 'Adam Warlock',
-          first_appearance: 'Fantastic Four n.º 66',
-          characters: 'Adam Warlock',
-          habilities: 'Posee varios poderes y características sobrehumanas derivadas de su estructura genética artificial, como fuerza y resistencia aumentadas, así como la capacidad de transformar energía cósmica con diferentes efectos y usos',
-          alt_img: 'https://i.annihil.us/u/prod/marvel/i/mg/4/00/5c9d29256c960/clean.jpg',
-          assets_img: 0,
-          usuarioId: 3
-        }
     ];
     const comentarios = [
       {

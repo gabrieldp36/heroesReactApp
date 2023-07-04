@@ -1,10 +1,15 @@
 const {response, request } = require('express');
 const  Heroe = require('../models/heroe');
+const  Usuario = require('../models/usuario');
 
 // Heroes Get.
 const heroesGet = async (req = request, res = response) => {
     try {
-        const data = await Heroe.findAll();
+        const data = await Heroe.findAll({include: {
+            model: Usuario,
+            as: 'usuario',
+            attributes: ['id']
+        }});
         res.json(data);
     } catch (error) {
        console.log(error);
@@ -50,7 +55,7 @@ const heroesPatch = async (req = request, res = response) => {
         if (!unHeroe) {
             res.status(404).json({error: `No se encontró un héroe con ID ${id}.`});
         } else {
-            if( usuarioAuth.admin || usuarioAuth.id == unHeroe.usuario.id ) {
+            if(  usuarioAuth.admin || usuarioAuth.id == unHeroe.usuario.id ) {
                 const unHeroe = Heroe.build(req.body);
                 await unHeroe.validate({skip:'usuarioId'});
                 await Heroe.update(req.body, { where: { id } } );

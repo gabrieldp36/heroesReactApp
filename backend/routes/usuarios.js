@@ -7,7 +7,7 @@ const router = Router();
 // Rutas.
 router.get('/', [validarJWT], usuariosGet);
 router.get('/:id', [validarJWT], usuariosById);
-router.post('/', [validarJWT], usuariosPost);
+router.post('/', usuariosPost);
 router.patch('/:id', [validarJWT], usuariosPatch);
 router.delete('/:id', [validarJWT], usuariosDelete);
 router.patch('/reactivar/:id', [validarJWT], usuariosReactivar);

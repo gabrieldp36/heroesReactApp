@@ -6,7 +6,7 @@ const validarJWT = async (req = request, res = response, next) => {
     const token = req.header('Authorization');
     if (!token) {
         return res.status(401).json({
-            msg: 'No se ha enviado un token en la petición.'
+            error: 'No se ha enviado un token en la petición.'
         });
     };
     try {
@@ -25,7 +25,7 @@ const validarJWT = async (req = request, res = response, next) => {
     } catch (error) {
         console.log(error);
         res.status(401).json({
-            msg: 'Token inválido.'
+            error: 'Token inválido.'
         });
     };
 };
