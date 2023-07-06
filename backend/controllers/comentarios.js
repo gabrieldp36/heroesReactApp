@@ -39,6 +39,7 @@ const comentariosHeroes = async (req = request, res = response) => {
         };
         const data = await Comentario.findAll({ 
             where: {heroeId: id}, 
+            order:[ ['id','DESC'] ],
             include: {model: Usuario, as: 'usuario', attributes: ['id', 'nombre', 'url_foto']},
         });
         res.json(data);
