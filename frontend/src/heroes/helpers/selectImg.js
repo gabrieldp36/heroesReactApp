@@ -19,3 +19,11 @@ export const selectPerfil = (usuario) => {
     };
   };
 };
+
+export const selectImgComentario = (url) => {
+  if(url) {
+    return url;
+  } else {  
+    return '/assets/UserPlaceHolder.jpg'
+  };
+};

@@ -25,6 +25,47 @@ button {
     display: initial;
 }
 
+/************************************SCROLL BAR************************************/
+
+.hide-scroll {
+    overflow: auto;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: transparent;
+}
+  
+*::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 20px;
+}
+
+*::-webkit-scrollbar-track:hover {
+    background: #c1c5c9;
+}
+
+*::-webkit-scrollbar-track:active {
+    background: #c1c5c9;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #989ea5;
+    border: 3px solid #989ea5;
+    border-radius: 20px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background-color: #495057;
+    border-color: #495057;
+}
+
 /***************************SWEET ALERT**********************/
 
 .swal2-timer-progress-bar {
@@ -113,9 +154,10 @@ button {
     color: #0d6efd;
 }
 
-.navBarUserName {
+.navBarUserName { 
     font-weight: bold !important;
     color: #5dcebc !important;
+    cursor: pointer;
 }
 
 .navBarAvatar {
@@ -162,6 +204,92 @@ button {
     font-size: 15px;
     color: #D92626;
     margin-right: 4px;
+}
+
+
+/*****************************Comentarios*****************************/
+
+.divListaComentarios {
+    height: auto;
+    max-height: 350px;
+    overflow: visible;
+    overflow-y: scroll;
+}
+
+.nombreComentario {
+    font-size: 30px !important;
+    font-weight: 500 !important;
+    margin-bottom: 30px !important;
+}
+
+.userIMGComentario {
+    height: 80px;
+    width: 80px;
+    background-size: cover;
+    /* background-position: center; */
+    border-radius: 50%;
+}
+
+.divComentario {
+    width: 380px;
+    max-width: 380px;
+    border: 1px solid #ced4da;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 30px;
+    padding-top: 20px;
+    padding-left: 20px; 
+    padding-right: 20px;
+    padding-bottom: 5px;
+}
+
+.bloqueComentario {
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+}
+
+.divInfoComentario {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+}
+
+.divBtnsComentarios {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.iconComentarios {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.iconComentarios:hover {
+    opacity: 0.8;
+} 
+
+.textAreaComentarios {
+    height: 144px;
+    resize: none;
+}
+
+.btnComentariosMT {
+    margin-top: 0px;
+}
+
+@media(max-width: 767px) {
+    .btnComentariosMT {
+        margin-top: 12px !important;
+        margin-left: 0px !important;
+    }
 }
 
 @media (max-width: 991px) {

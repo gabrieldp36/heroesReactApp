@@ -6,3 +6,4 @@ export * from './SearchPage';
 export * from './CreacionesPage';
 export * from './PropiosPage';
 export * from './PerfilPage';
+export * from './AdminPage';

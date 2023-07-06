@@ -33,7 +33,6 @@ export const HeroCard = (heroe) => {
         };
     };
 
-    console.log(location.pathname)
     return (
         <div className={`col ${selectAnimation()} mb-4`}>
             <div className="card">

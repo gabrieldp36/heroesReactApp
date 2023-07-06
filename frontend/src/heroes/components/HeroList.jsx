@@ -36,7 +36,7 @@ export const HeroList = ({ publisher }) => {
             {
                 ( heroes && heroes.length === 0 && !publisher) &&
                 <div>
-                    <div className="alert alert-danger animate__animated animate__fadeIn" >
+                    <div className="alert alert-danger animate__animated animate__flipInX" >
                         No tenés héroes creados ¡Crea uno, hace click en el botón!
                     </div>
                     <button 

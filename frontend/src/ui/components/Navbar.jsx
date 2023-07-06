@@ -111,6 +111,15 @@ export const NavbarComponent = () => {
                 >
                   Buscar
                 </NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-item nav-link  ${isActive ? "active" : ""}`
+                  }
+                  to="/admin"
+                  onClick={closeCanvas}
+                >
+                  Administrar
+                </NavLink>
               </Nav>
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <span
@@ -122,9 +131,8 @@ export const NavbarComponent = () => {
                 <span className='lineaVertical avatarImgHidden'></span>
 
                 <span 
-                  className="nav-item nav-link text-primary navBarUserName"
-                  style={{cursor: "pointer"}}
-                  onClick={() => navigate('/perfil')}
+                  className="nav-item nav-link navBarUserName"
+                  onClick={() => {closeCanvas(); navigate('/perfil');}}
                 >
                   {user?.nombre}
                 </span>

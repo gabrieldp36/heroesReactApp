@@ -8,10 +8,26 @@ import { AuthContext } from "../../auth/context/AuthContext";
 import { selectPerfil } from "../helpers";
 import { useNavigate } from "react-router-dom";
 
+// Custom validator
+yup.addMethod(yup.string, "passwordValidation", function (errorMessage) {
+    return this.test(`password-test`, errorMessage, function (value) {
+        if(!value) {
+            return true;
+        } else {
+            const { path, createError } = this;
+            const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+            return (
+              (regExp.test(value)) ||
+              createError({ path, message: errorMessage })
+            );
+        };
+    });
+});
+
 const schema = yup.object().shape({
   nombre: yup.string().required('El campo es obligatorio'),
   correo: yup.string().required('El campo es obligatorio').email('Ingrese un correo válido'),
-  password: yup.string(),
+  password: yup.string().passwordValidation('La contraseña debe contener mínimo 8 caractéres, al menos una letra mayúscula, una letra minúscula y un número.'),
   url_foto: yup.string(),
 });
 
@@ -36,6 +52,7 @@ export const PerfilPage = () => {
     },[])
 
     const enviar = (data) => {
+        (!data.password) ? delete data.password : '';
         axios.patch(`http://localhost:3001/usuarios/${user.id}`, data)
         .then( (_) => {
             toast('¡Perfil actualizado!');
@@ -90,10 +107,10 @@ export const PerfilPage = () => {
                             <div className="mb-3">
                                 <label htmlFor="nombre" className="form-label">Nombre</label>
                                 <input 
-                                type="text" 
-                                className={`form-control ${(errors.nombre) ? 'is-invalid' : ''} `} 
-                                id="nombre" 
-                                {...register("nombre")} 
+                                    type="text" 
+                                    className={`form-control ${(errors.nombre) ? 'is-invalid' : ''} `} 
+                                    id="nombre" 
+                                    {...register("nombre")} 
                                 />
                                 {errors.nombre && <small className={'text-danger'}>{errors.nombre.message}</small>}
                             </div>
@@ -101,10 +118,10 @@ export const PerfilPage = () => {
                             <div className="mb-3">
                                 <label htmlFor="correo" className="form-label">Correo</label>
                                 <input 
-                                type="email" 
-                                className={`form-control ${(errors.correo) ? 'is-invalid' : ''} `} 
-                                id="correo" 
-                                {...register("correo")} 
+                                    type="email" 
+                                    className={`form-control ${(errors.correo) ? 'is-invalid' : ''} `} 
+                                    id="correo" 
+                                    {...register("correo")} 
                                 />
                                 {errors.correo && <small className={'text-danger'}>{errors.correo.message}</small>}
                             </div>
@@ -112,15 +129,17 @@ export const PerfilPage = () => {
                             <div className="mb-3">
                                 <label htmlFor="password" className="form-label">Password</label>
                                 <input 
-                                type="password" 
-                                className="form-control" 
-                                id="password" 
-                                {...register("password")} 
+                                    type="password" 
+                                    className={`form-control ${(errors.password) ? 'is-invalid' : ''} `} 
+                                    id="password" 
+                                    {...register("password")} 
                                 />
-                                <span className="spanInfo">
-                                    La contraseña debe contener mínimo 8 caractéres, 
-                                    al menos una letra mayúscula, una letra minúscula y un número.
-                                </span>
+                                {errors.password && <small className={'text-danger'}>{errors.password.message}</small>}
+                                { !errors.password &&
+                                    <span className="spanInfo">
+                                        En blanco para mantener la contraseña
+                                    </span>
+                                }
                             </div>
                             {/* Url_foto*/}
                             <div className="mb-3">

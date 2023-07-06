@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { confirmAlert, deleteHeroe, getHeroById, selectImg, simpleAlert, toast } from '../helpers';
-import { FormularioHeroe } from '../components';
+import { Comentarios, FormularioHeroe } from '../components';
 import { AuthContext } from '../../auth/context/AuthContext';
 
 
@@ -13,9 +13,15 @@ export const HeroPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  // States
   const [ heroe, setHeroe ] = useState(null);
   const [mostrarImg, setMostrarImg] = useState(false);
   const [mostrarBtns, setMostrarBtns] = useState(false);
+  const [ modalShow, setModalShow ] = useState(false);
+
+  const mostrarModalComentarios = () => {
+    setModalShow(true); 
+  };
 
   // Ocultar/Mostrar formulario.
   const [ mostrarForm, setMostrarForm ] = useState(false);
@@ -30,7 +36,7 @@ export const HeroPage = () => {
   // Btn regresar
   const onNavigateBack = () => {
     navigate(-1);
-  }
+  };
 
   // Mostrar ocultar formulario.
   const btnToogle = () => {
@@ -151,11 +157,27 @@ export const HeroPage = () => {
               Editar
             </button>
           }
-
+          { mostrarBtns &&
+            <button 
+              className="btn btn-outline-success ms-2 btnComentariosMT"
+              onClick={ () => mostrarModalComentarios() }
+            >
+              Comentarios
+            </button>
+          }
           { mostrarForm && 
             <div style={{marginTop:'30px'}} className='col animate__animated animate__fadeIn'>
               <FormularioHeroe heroeSeleccionado = { heroe }  onCambio={ mostrarHeroe } mostrarForm={ setMostrarForm }/>
             </div>
+          }
+          { modalShow &&
+            <Comentarios
+              show = { modalShow }
+              usuarioAuth = { user }
+              heroeId = { heroe.id }
+              heroeNombre = { heroe.superhero }
+              onHide={() => setModalShow(false)}
+            />
           }
         </div>
       }
