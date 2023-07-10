@@ -6,7 +6,13 @@ const Heroe = require('../models/heroe');
 // Comentarios Get.
 const comentariosGet = async (req = request, res = response) => {
     try {
-        const data = await Comentario.findAll({attributes: ['id', 'heroeId', 'usuarioId', 'descripcion']});
+        const data = await Comentario.findAll({ 
+            attributes: ['id', 'heroeId', 'usuarioId', 'descripcion'],
+            include: [
+                {model: Usuario, as: 'usuario', attributes: ['nombre']},
+                {model: Heroe, as: 'heroe', attributes: ['superhero']},
+            ]
+        });
         res.json(data);
     } catch (error) {
        console.log(error);
