@@ -33,7 +33,7 @@ export const Comentarios = (props) => {
         renderizarComentrarios(heroeId);
     },[ heroeId ]);
 
-    // Formulario invitados.
+    // Formulario Comentarios.
     const { register, handleSubmit, setValue, clearErrors, formState: { errors, isValid } } = useForm({
         resolver: yupResolver(schema),
         mode:'all'

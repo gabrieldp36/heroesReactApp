@@ -111,15 +111,17 @@ export const NavbarComponent = () => {
                 >
                   Buscar
                 </NavLink>
-                <NavLink
-                  className={({ isActive }) =>
-                    `nav-item nav-link  ${isActive ? "active" : ""}`
-                  }
-                  to="/admin"
-                  onClick={closeCanvas}
-                >
-                  Administrar
-                </NavLink>
+                { user.admin &&
+                  <NavLink
+                    className={({ isActive }) =>
+                      `nav-item nav-link  ${isActive ? "active" : ""}`
+                    }
+                    to="/admin"
+                    onClick={closeCanvas}
+                  >
+                    Administrar
+                  </NavLink>
+                }
               </Nav>
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <span

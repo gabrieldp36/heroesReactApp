@@ -1,8 +1,13 @@
+import { useContext } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { AuthContext } from '../../auth';
 import { NavbarComponent } from '../../ui';
 import { AdminPage, CreacionesPage, DcPage, HeroPage, MarvelPage, PerfilPage, PropiosPage, SearchPage } from '../pages';
 
 export const HeroesRoutes = () => {
+
+  const { user } = useContext( AuthContext );
+
   return (
     <>
         <NavbarComponent />
@@ -15,8 +20,9 @@ export const HeroesRoutes = () => {
               <Route path="search" element={<SearchPage />} />
               <Route path="hero/:id" element={<HeroPage />} />
               <Route path="perfil" element={<PerfilPage />} />
-              <Route path="admin" element={<AdminPage />} />
+              { user.admin && <Route path="admin" element={<AdminPage />} /> }
               <Route path="/" element={<Navigate to="/marvel" />} />
+              <Route path="*" element={<Navigate to="/marvel" />} />
             </Routes>
         </div>
     </>

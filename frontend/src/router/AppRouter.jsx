@@ -9,7 +9,7 @@ import { RegistroPage } from '../auth/pages/RegistroPage';
 
 export const AppRouter = () => {
 
-  let { checkToken } = useContext( AuthContext );
+  const { checkToken } = useContext( AuthContext );
   const [mostrarApp, setMotrarApp] = useState(false)
 
   useEffect( () => {
@@ -30,8 +30,9 @@ export const AppRouter = () => {
               <PublicRoute>
                 {/* <LoginPage /> */}
                 <Routes>
-                  <Route path="/registro" element={<RegistroPage />} />
-                  <Route path="/*" element={<LoginPage />} replace={true}/>
+                  <Route path="/registro" element={<RegistroPage />} replace={true} />
+                  <Route path="/login" element={<LoginPage />} replace={true}/>
+                  <Route path="*" element={<LoginPage />} replace={true}/>
                 </Routes>
               </PublicRoute>
             }

@@ -109,7 +109,7 @@ button {
     color: transparent !important;
     cursor: pointer;
 }
-  
+
 .encabezadoPerfilUsuario {
     flex-direction: column;
     justify-content: center;
@@ -206,8 +206,7 @@ button {
     margin-right: 4px;
 }
 
-
-/*****************************Comentarios*****************************/
+/*****************************COMENTARIOS*****************************/
 
 .divListaComentarios {
     height: auto;
@@ -284,6 +283,33 @@ button {
 .btnComentariosMT {
     margin-top: 0px;
 }
+
+/*************************ADMIN PAGE****************************/
+
+.Mui-TableHeadCell-Content {
+    justify-content: center !important;
+}
+
+.imgUserTable {
+    display: table-cell;
+    width: 56px;
+    height: 56px;
+    background-size: cover;
+    border-radius: 50%;
+    color: transparent !important;
+}
+  
+.heroAvatarTable {
+    display: table-cell;
+    width: 60px;
+    height: 90px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 6px;
+    color: transparent !important;
+  }
+
+/***********************MEDIA QUERIES**************************/
 
 @media(max-width: 767px) {
     .btnComentariosMT {
