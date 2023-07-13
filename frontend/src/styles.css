@@ -25,6 +25,14 @@ button {
     display: initial;
 }
 
+.minHeight {
+    min-height: 550px;
+}
+
+.minHeightHeroPage {
+    min-height: 550px;
+}
+
 /************************************SCROLL BAR************************************/
 
 .hide-scroll {
@@ -84,6 +92,26 @@ button {
 .swal2-icon.swal2-warning {
     border-color: #b98d0c !important;
     color: #b98d0c !important;
+}
+
+/*************************COLORS*****************************/
+
+:root {
+    --yellow: #ffd600;
+    --purple: #7b1fa2;
+    --white: #fff;
+    --black: #151313;
+    --orange: #f90;
+    --green: #26fdc5;
+    --gray80: #c4c4c4;
+    --gray20: #2f2f2f;
+    --gray50: #525050;
+    --violet: #260046;
+    --deep: #421b5c;
+    --grayInput:#504f4f;
+    --garyCard: #313131;
+    --red: #D92626;
+    --maximumYellow: #F9BA41;
 }
 
 /*************************PERFIL USUARIO*************************/
@@ -307,7 +335,76 @@ button {
     background-repeat: no-repeat;
     border-radius: 6px;
     color: transparent !important;
-  }
+}
+
+/*************************FOOTER COMPONENT****************************/
+.footerBG {
+    background: #212529; 
+    height: auto; 
+    margin-top: 100px; 
+}
+  
+.divLogo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 0.7rem;
+}
+  
+.footerLogo {
+    width: 90%;
+    max-width: 480px;
+    height: 100%;
+}
+  
+.divNavPills {
+    padding-bottom: 40px;
+}
+  
+.anchorNavPillsFooter {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: none !important;
+    color: var(--white) !important;
+}
+  
+.anchorNavPillsFooter:hover {
+    color: #69f0ae !important;
+}
+  
+.marginIcon {
+    margin-right: 10px !important;
+}
+  
+.marginNombre {
+    margin-right: 30px;
+}
+  
+.derechosReservadosFooter {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: none !important;
+    color: var(--white) !important;
+}
+
+.itemBar {
+    font-weight: bold !important;
+}
+.nav-link.itemBar:hover {
+    color: #69f0ae !important;
+}
+
+.active {
+    color: #69f0ae !important;
+}
+
+.itemBarLogut:hover {
+    color: #D92626 !important;
+}
 
 /***********************MEDIA QUERIES**************************/
 
@@ -315,6 +412,9 @@ button {
     .btnComentariosMT {
         margin-top: 12px !important;
         margin-left: 0px !important;
+    }
+    .nav-link {
+        color: #151313;
     }
 }
 
@@ -324,6 +424,13 @@ button {
     }
     .navBarUserName{
         font-weight: normal !important;
-        color:#0d6efd !important;
+        color:#151313!important;
+    }
+    .nav-link {
+        color: #151313;
+        font-weight: normal !important;
+    }
+    .navBarUserName:hover{
+        color: #69f0ae !important;
     }
 }

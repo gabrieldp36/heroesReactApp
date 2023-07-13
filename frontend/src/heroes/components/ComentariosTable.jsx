@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState,  useRef  } from "react";
 import { MaterialReactTable } from "material-react-table";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -14,6 +14,7 @@ const schema = yup.object().shape({
 
 export const ComentariosTable = () => {
 
+  // States
   const [mostrarTable, setMostrarTable ] = useState(false);
   const [comentarios, setComentarios ] = useState([]);
   const [ comentarioSelecionado, setComentarioSelccionado ] = useState(null);
@@ -22,6 +23,10 @@ export const ComentariosTable = () => {
     pageIndex: 0,
     pageSize: 5,
   });
+
+
+  // refs
+  const bodyBottom = useRef();
   
   useEffect(() => {
    obtenerComentarios();
@@ -66,11 +71,18 @@ export const ComentariosTable = () => {
     setMostrarForm(true);
     setValue("descripcion", comentario.descripcion);
     setComentarioSelccionado(comentario);
+    scrollToBottom()
   };
 
   const resetForm = () => {
     setValue("descripcion", '');
     clearErrors();
+  };
+
+  const scrollToBottom = () => {
+    setTimeout(() => {
+      bodyBottom.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   const enviarComentario = async (data) => {
@@ -160,6 +172,7 @@ export const ComentariosTable = () => {
           state={{ pagination }}
         />
       }
+      <div ref={bodyBottom}></div>
       {mostrarForm && (
         <div className="container mb-3">
           <div className="row">

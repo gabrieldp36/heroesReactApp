@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../auth/context/AuthContext';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { selectPerfil } from '../../heroes/helpers';
+import { confirmAlert, selectPerfil } from '../../heroes/helpers';
 
 export const NavbarComponent = () => {
 
@@ -13,10 +13,15 @@ export const NavbarComponent = () => {
   const navigate = useNavigate();
 
   const onLogout = () => {
-      logout();
-      navigate('/login', {
+    confirmAlert(`Está por salir de la aplicación`, 'question', 'top-end')
+    .then((result) => {
+      if (result.isConfirmed) {
+        logout();
+        navigate('/login', {
           replace: true,
-      });
+        });
+      }
+    });
   };
 
   const closeCanvas = () => {
@@ -43,9 +48,7 @@ export const NavbarComponent = () => {
       >
         <Container fluid>
           <Navbar.Brand>
-            <Link className="navbar-brand" to="/">
-              <img src={'/assets/logoChico.png'} alt="" style={{width:'150px',}}/>
-            </Link>
+            <img src={'/assets/logoChico.png'} alt="" style={{width:'150px',}}/>
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls={`offcanvasNavbar`} />
@@ -64,7 +67,7 @@ export const NavbarComponent = () => {
               <Nav style={{marginTop: '4px'}}>
                 <NavLink
                   className={({ isActive }) =>
-                    `nav-item nav-link  ${isActive ? "active" : ""}`
+                    `nav-item nav-link itemBar ${isActive ? "active" : ""}`
                   }
                   to="/marvel"
                   onClick={closeCanvas}
@@ -74,7 +77,7 @@ export const NavbarComponent = () => {
 
                 <NavLink
                   className={({ isActive }) =>
-                    `nav-item nav-link  ${isActive ? "active" : ""}`
+                    `nav-item nav-link itemBar ${isActive ? "active" : ""}`
                   }
                   to="/dc"
                   onClick={closeCanvas}
@@ -84,7 +87,7 @@ export const NavbarComponent = () => {
 
                 <NavLink
                   className={({ isActive }) =>
-                    `nav-item nav-link  ${isActive ? "active" : ""}`
+                    `nav-item nav-link itemBar ${isActive ? "active" : ""}`
                   }
                   to="/misheroes"
                   onClick={closeCanvas}
@@ -94,7 +97,7 @@ export const NavbarComponent = () => {
 
                 <NavLink
                   className={({ isActive }) =>
-                    `nav-item nav-link  ${isActive ? "active" : ""}`
+                    `nav-item nav-link itemBar ${isActive ? "active" : ""}`
                   }
                   to="/creaciones"
                   onClick={closeCanvas}
@@ -104,7 +107,7 @@ export const NavbarComponent = () => {
 
                 <NavLink
                   className={({ isActive }) =>
-                    `nav-item nav-link  ${isActive ? "active" : ""}`
+                    `nav-item nav-link itemBar ${isActive ? "active" : ""}`
                   }
                   to="/search"
                   onClick={closeCanvas}
@@ -114,7 +117,7 @@ export const NavbarComponent = () => {
                 { user.admin &&
                   <NavLink
                     className={({ isActive }) =>
-                      `nav-item nav-link  ${isActive ? "active" : ""}`
+                      `nav-item nav-link itemBar ${isActive ? "active" : ""}`
                     }
                     to="/admin"
                     onClick={closeCanvas}
@@ -140,7 +143,7 @@ export const NavbarComponent = () => {
                 </span>
 
                 <span
-                  className="nav-item nav-link"
+                  className="nav-item nav-link itemBarLogut"
                   style={{ cursor: "pointer" }}
                   onClick={onLogout}
                 >

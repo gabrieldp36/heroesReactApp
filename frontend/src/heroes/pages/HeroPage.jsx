@@ -35,7 +35,7 @@ export const HeroPage = () => {
 
   // Btn regresar
   const onNavigateBack = () => {
-    navigate(-1);
+    navigateBack();
   };
 
   // Mostrar ocultar formulario.
@@ -93,8 +93,26 @@ export const HeroPage = () => {
     });
   };
 
+  const navigateBack = () => {
+    const lastPath = localStorage.getItem("lastPath");
+    switch (lastPath) {
+      case "/marvel":
+        navigate("../marvel");
+      break;
+      case "/dc":
+        navigate("../dc");
+      break;
+      case "/misheroes":
+        navigate("../misheroes");
+      break;
+      default:
+        navigate("../marvel");
+      break;
+    };
+  };
+
   return (
-    <div className="row mt-5" style={{marginBottom:'45px'}}>
+    <div className="row mt-5 minHeightHeroPage" style={{marginBottom:'45px'}}>
 
       <div className="col-4">
         {

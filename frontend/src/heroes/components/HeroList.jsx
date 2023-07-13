@@ -23,7 +23,7 @@ export const HeroList = ({ publisher }) => {
     }, []);
 
     return (
-        <div className="row">
+        <div className="row minHeight">
             { (heroes && heroes.length > 0) &&
                 heroes.map( hero => (
                     <div className='col-lg-6 col-md-8 col-xs-12' key={ hero.id } >

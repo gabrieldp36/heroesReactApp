@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2'
 
-export const confirmAlert = (text, icon='warning') => {
+export const confirmAlert = (text, icon='warning', position='center' ) => {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-success ms-2',
@@ -16,7 +16,8 @@ export const confirmAlert = (text, icon='warning') => {
         showCancelButton: true,
         confirmButtonText: 'confirmar',
         cancelButtonText: 'cancelar',
-        reverseButtons: true
+        reverseButtons: true,
+        position,
     });
 };
 

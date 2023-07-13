@@ -33,6 +33,10 @@ export const HeroCard = (heroe) => {
         };
     };
 
+    const guardarRuta = () => {
+        localStorage.setItem('lastPath', location.pathname);
+    };
+
     return (
         <div className={`col ${selectAnimation()} mb-4`}>
             <div className="card">
@@ -76,7 +80,11 @@ export const HeroCard = (heroe) => {
                                 <small className="text-muted">{ heroe.first_appearance }</small>
                             </p>
 
-                            <Link to={`/hero/${ heroe.id }`} style={{textDecoration:'none'}}>
+                            <Link
+                                onClick={ () => guardarRuta() } 
+                                to={`/hero/${ heroe.id }`} 
+                                style={{textDecoration:'none'}}
+                            >
                                 <img src={'/assets/iconTarjetaHeroe.svg'} className='tarjetaIcon' alt="" />
                                 <span className='spanIconTarjeta ms-2'>Ver mas</span>
                             </Link>    
