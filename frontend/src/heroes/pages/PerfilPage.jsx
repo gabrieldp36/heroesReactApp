@@ -4,6 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import axios from 'axios';
 import { confirmAlert, simpleAlert, toast } from '../../heroes/helpers/sweetAlert';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from "../../auth/context/AuthContext";
 import { selectPerfil } from "../helpers";
 import { useNavigate } from "react-router-dom";
@@ -151,8 +153,19 @@ export const PerfilPage = () => {
                                 {...register("url_foto")} 
                                 />
                             </div>
-                            <button type="submit" className="w-100 btn btn-lg btn-primary mt-2" disabled={!isValid}>
-                                Actualizar perfil
+                            <button 
+                                type="submit" 
+                                className="w-100 btn btn-lg btn-primary mt-2" 
+                                disabled={!isValid}
+                            >
+                                <span className=' displayCenter' style={{gap: '16px'}}> 
+                                    <FontAwesomeIcon 
+                                        icon={faPenToSquare} 
+                                        color="white"
+                                        fontSize={24}  
+                                    />
+                                    Actualizar perfil
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -174,7 +187,14 @@ export const PerfilPage = () => {
                                 type="button"
                                 onClick={eliminarCuenta}
                             >
-                                Eliminar
+                                <span className=' displayCenter' style={{gap: '16px'}}> 
+                                    <FontAwesomeIcon 
+                                        icon={faTrashCan} 
+                                        color="white"
+                                        fontSize={20}  
+                                    />
+                                    Eliminar
+                                </span>
                             </button>
                         </div>
                     </div>

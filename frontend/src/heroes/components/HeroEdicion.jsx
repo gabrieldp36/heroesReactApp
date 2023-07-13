@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFloppyDisk, faBan } from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from '../../auth/context/AuthContext';
 import { simpleAlert, toast } from '../helpers';
 
@@ -21,7 +23,7 @@ export function FormularioHeroe (props) {
 
   const { user } = useContext( AuthContext );
 
-  const { heroeSeleccionado, onCambio, mostrarForm } = props;
+  const { heroeSeleccionado, onCambio, mostrarForm, scrollToTop } = props;
   const { register, handleSubmit, setValue, clearErrors, formState: { errors, isValid } } = useForm({
     resolver: yupResolver(schema),
     mode: 'all',
@@ -67,6 +69,7 @@ export function FormularioHeroe (props) {
         onCambio(heroeSeleccionado.id); // graficamos en pantalla los cambios.
         setGuardando(false);
         mostrarForm(false);
+        scrollToTop();
       })
       .catch((error) => {
         console.log(error);
@@ -92,7 +95,7 @@ export function FormularioHeroe (props) {
   };
 
   return (
-    <div style={{paddingBottom: '20px'}} className='animate__animated animate__fadeIn animate__slow'>
+    <div style={{paddingBottom: '20px'}} className='animate__animated animate__fadeIn'>
       <form onSubmit={ handleSubmit(enviar) }>
         {/* Super héroe */}
         <div className="mb-3">
@@ -174,13 +177,35 @@ export function FormularioHeroe (props) {
             {...register("alt_img")}
           />
         </div>
-        <button type="submit" className="btn btn-primary" disabled={ !isValid }>
-          Guardar
-          { guardando &&
-            <div className="spinner-border text-light spinner-border-sm ms-2" role="status"></div>
-          }
+        <button type="submit" className="btn btn-primary me-2" disabled={ !isValid }>
+          <span className=' displayCenter'>
+            <FontAwesomeIcon 
+              icon={faFloppyDisk} 
+              color="white"
+              fontSize={20} 
+              className='me-2' 
+            />
+            Guardar
+            {guardando &&
+              <div className="spinner-border text-light spinner-border-sm ms-2" role="status"></div>
+            }
+          </span>
         </button>
-        <button type="reset" className="ms-1 btn btn-secondary" onClick={ () => limpiarForm() }>Descartar</button>
+        <button 
+          type="reset" 
+          className="ms-1 btn btn-secondary" 
+          onClick={ () => limpiarForm() }
+        >
+          <span className=' displayCenter'>
+            <FontAwesomeIcon 
+              icon={faBan} 
+              color="white"
+              fontSize={20} 
+              className='me-2' 
+            />
+            Descartar
+          </span>
+        </button>
       </form>
     </div>
   );

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass, faBan } from '@fortawesome/free-solid-svg-icons'
 import { HeroCard } from '../components';
 import { searchHero } from '../helpers';
 
@@ -16,8 +18,13 @@ export const SearchPage = () => {
     mode: 'all',
   });
 
+  // States
   const [ heroes, setHeroes ] = useState([]);
   const [ sinResultados, setSinResultados ] = useState(false);
+
+  //States-Icons
+  const [overBuscar, setOverBuscar] = useState(false);
+  const [overDescartar, setOverDescartar] = useState(false);
   
   const buscarHeroes = ({busqueda: termino}) => {
     searchHero(termino)
@@ -37,7 +44,7 @@ export const SearchPage = () => {
   };
 
   return (
-    <div className='mb-4 animate__animated animate__fadeIn animate__slow'>
+    <div className='mb-4 animate__animated animate__fadeIn'>
       <h1>Buscador</h1> 
       <hr />
 
@@ -56,11 +63,39 @@ export const SearchPage = () => {
               />
               {errors.busqueda && <small className={'text-danger'}>{errors.busqueda.message}</small>}
             </div>
-            <button type="submit" className="btn btn-outline-primary mt-1" disabled={!isValid}>
-              Buscar
+            <button 
+              type="submit" 
+              className="btn btn-outline-primary mt-1" 
+              disabled={!isValid}
+              onMouseOver={() =>  setOverBuscar(true)}
+              onMouseLeave={() =>  setOverBuscar(false)}
+            >
+              <span className=' displayCenter'>
+                <FontAwesomeIcon 
+                  icon={faMagnifyingGlass} 
+                  color={ (overBuscar) ? "white" : "#0d6efd"}
+                  fontSize={20} 
+                  className='me-2' 
+                />
+                Buscar
+              </span>
             </button>
-            <button type="button" className="btn btn-outline-secondary mt-1 ms-2" onClick={resetForm}>
-              Descartar
+            <button 
+              type="button" 
+              className="btn btn-outline-secondary mt-1 ms-2" 
+              onClick={resetForm}
+              onMouseOver={() =>  setOverDescartar(true)}
+              onMouseLeave={() =>  setOverDescartar(false)}
+            >
+              <span className=' displayCenter'>
+                <FontAwesomeIcon 
+                  icon={faBan} 
+                  color={ (overDescartar) ? "white" : "#6c757"}
+                  fontSize={20} 
+                  className='me-2' 
+                />
+                Descartar
+              </span>
             </button>
           </form>
         </div>

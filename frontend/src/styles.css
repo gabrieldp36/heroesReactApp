@@ -33,6 +33,10 @@ button {
     min-height: 550px;
 }
 
+.hoverIconHeroeCard:hover {
+    opacity: 0.8;
+}
+
 /************************************SCROLL BAR************************************/
 
 .hide-scroll {
@@ -174,7 +178,7 @@ button {
     margin-top: -18px;
     font-size: 14.5px !important;
     letter-spacing: 0.8px;
-    color: var(--gray80);
+    color: var(--gray20);
 }
 
 .spanInfo {
@@ -265,7 +269,7 @@ button {
     border-bottom-right-radius: 30px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 30px;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-left: 20px; 
     padding-right: 20px;
     padding-bottom: 5px;
@@ -290,7 +294,7 @@ button {
     justify-content: end;
     align-items: center;
     gap: 20px;
-    padding: 10px;
+    padding: 6px;
 }
 
 .iconComentarios {
@@ -308,8 +312,13 @@ button {
     resize: none;
 }
 
-.btnComentariosMT {
-    margin-top: 0px;
+.btn-close {
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23D92626'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    opacity: unset;
+}
+
+.btn-close:hover {
+    opacity: 0.8;
 }
 
 /*************************ADMIN PAGE****************************/
@@ -409,10 +418,6 @@ button {
 /***********************MEDIA QUERIES**************************/
 
 @media(max-width: 767px) {
-    .btnComentariosMT {
-        margin-top: 12px !important;
-        margin-left: 0px !important;
-    }
     .nav-link {
         color: #151313;
     }
@@ -430,7 +435,15 @@ button {
         color: #151313;
         font-weight: normal !important;
     }
-    .navBarUserName:hover{
-        color: #69f0ae !important;
+    .navBarUserName {
+        color: #5dcebc !important;
+        font-weight: 400 !important;
+    }
+    .navBarUserName:hover {
+        color: #5dcebc !important;
+    }
+    .itemBarLogut {
+        color: #D92626 !important;
+        font-weight: 400 !important;
     }
 }

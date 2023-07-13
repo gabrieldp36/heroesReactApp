@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPen, faTrashCan, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import { confirmAlert, getComentariosTable, toast } from "../helpers";
 
 let columnas = [];
@@ -23,6 +25,9 @@ export const ComentariosTable = () => {
     pageIndex: 0,
     pageSize: 5,
   });
+
+  // States-Icon
+  const [overEnviar, setOverEnviar] = useState(false);
 
 
   // refs
@@ -93,6 +98,7 @@ export const ComentariosTable = () => {
       await axios.patch('http://localhost:3001/comentarios/' + comentarioSelecionado.id, comentario);
       setComentarioSelccionado(null);
       setMostrarForm(false);
+      setOverEnviar(false)
       obtenerComentarios();
       resetForm();
       toast('¡Comentario actualizado!');
@@ -123,13 +129,29 @@ export const ComentariosTable = () => {
               className="btn btn-primary btn-sm"
               onClick={() => onEditar(data.row.original)}
             >
-             Editar
+              <span className=' displayCenter'>
+                <FontAwesomeIcon 
+                  icon={faPen} 
+                  color="white" 
+                  fontSize={15} 
+                  className='me-2' 
+                />
+                Editar
+              </span>
             </button>
             <button
               className="btn btn-danger btn-sm ms-2"
               onClick={() => eliminarComentario(data.row.original)}
             >
-              Eliminar
+              <span className=' displayCenter'>
+                <FontAwesomeIcon 
+                  icon={faTrashCan} 
+                  color="white" 
+                  fontSize={15} 
+                  className='me-2' 
+                />
+                Eliminar
+              </span>
             </button>
           </span>
         ),
@@ -157,20 +179,22 @@ export const ComentariosTable = () => {
         </div>
       }
       { mostrarTable &&
-        <MaterialReactTable
-          columns={columnas}
-          data={comentarios}
-          muiTableBodyCellProps={{
-            sx: {
-              textAlign: "center",
-            },
-          }}
-          muiTablePaginationProps={{
-            rowsPerPageOptions: [5, 10, 20, 50],
-          }}
-          onPaginationChange={setPagination}
-          state={{ pagination }}
-        />
+        <div className="animate__animated animate__fadeIn animate__slow">
+          <MaterialReactTable
+            columns={columnas}
+            data={comentarios}
+            muiTableBodyCellProps={{
+              sx: {
+                textAlign: "center",
+              },
+            }}
+            muiTablePaginationProps={{
+              rowsPerPageOptions: [5, 10, 20, 50],
+            }}
+            onPaginationChange={setPagination}
+            state={{ pagination }}
+          />
+        </div>
       }
       <div ref={bodyBottom}></div>
       {mostrarForm && (
@@ -201,7 +225,15 @@ export const ComentariosTable = () => {
                     className="btn btn-outline-success mt-2"
                     type="submit"
                     disabled={!isValid}
+                    onMouseOver={() =>  setOverEnviar(true)}
+                    onMouseLeave={() =>  setOverEnviar(false)}
                   >
+                    <FontAwesomeIcon 
+                      icon={faPaperPlane} 
+                      color={ (overEnviar) ? "white" : "#198754"}
+                      fontSize={20} 
+                      className='me-2' 
+                    />
                     Enviar
                   </button>
                 </div>

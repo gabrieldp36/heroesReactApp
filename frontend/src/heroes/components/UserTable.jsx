@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { MaterialReactTable } from "material-react-table";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBan, faAtom} from '@fortawesome/free-solid-svg-icons'
 import { deleteUsuarios, getUsuarios, reactivarUsuarios, selectPerfil, simpleAlert, toast } from "../helpers";
 
 let columnas = [];
@@ -85,14 +87,30 @@ export const UsuariosTable = () => {
               disabled = {data.row.original.estado == true}
               onClick={() => activarUsuario(data.cell.getValue())}
             >
-              Activar
+              <span className=' displayCenter'>
+                <FontAwesomeIcon 
+                  icon={faAtom} 
+                  color="white" 
+                  fontSize={16} 
+                  className='me-2' 
+                />
+                Activar
+              </span>
             </button>
             <button
               className="btn btn-danger btn-sm ms-2"
               disabled = {data.row.original.estado == false}
               onClick={() => bloquearUsuario(data.cell.getValue())}
             >
-              bloquear
+              <span className=' displayCenter'>
+                <FontAwesomeIcon 
+                  icon={faBan} 
+                  color="white" 
+                  fontSize={15} 
+                  className='me-2' 
+                />
+                Bloquear
+              </span>
             </button>
           </span>
         ),
@@ -120,20 +138,22 @@ export const UsuariosTable = () => {
         </div>
       }
       { mostrarTable &&
-        <MaterialReactTable
-          columns={ columnas }
-          data={users}
-          muiTableBodyCellProps={{
-            sx: {
-              textAlign: "center"
-            },
-          }}
-          muiTablePaginationProps={{
-            rowsPerPageOptions: [5, 10, 20, 50],
-          }}
-          onPaginationChange={setPagination}
-          state={{ pagination }}
-        />
+        <div className="animate__animated animate__fadeIn animate__slow">
+          <MaterialReactTable
+            columns={ columnas }
+            data={users}
+            muiTableBodyCellProps={{
+              sx: {
+                textAlign: "center"
+              },
+            }}
+            muiTablePaginationProps={{
+              rowsPerPageOptions: [5, 10, 20, 50],
+            }}
+            onPaginationChange={setPagination}
+            state={{ pagination }}
+          />
+        </div>
       }
     </>
   );

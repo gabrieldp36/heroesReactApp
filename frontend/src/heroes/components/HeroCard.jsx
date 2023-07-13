@@ -60,7 +60,7 @@ export const HeroCard = (heroe) => {
                         <img 
                             ref={imgRef}
                             src={selectImg(heroe) } 
-                            className="card-img" 
+                            className="card-img animate__animated animate__fadeIn" 
                             alt={ heroe.superhero } 
                             onLoad={ onLoad }
                             decoding='async'
@@ -84,6 +84,7 @@ export const HeroCard = (heroe) => {
                                 onClick={ () => guardarRuta() } 
                                 to={`/hero/${ heroe.id }`} 
                                 style={{textDecoration:'none'}}
+                                className='hoverIconHeroeCard'
                             >
                                 <img src={'/assets/iconTarjetaHeroe.svg'} className='tarjetaIcon' alt="" />
                                 <span className='spanIconTarjeta ms-2'>Ver mas</span>

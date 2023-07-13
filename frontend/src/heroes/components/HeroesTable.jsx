@@ -1,5 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { MaterialReactTable } from "material-react-table";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { confirmAlert, deleteHeroe, getHeroesTable, selectImg, toast } from "../helpers";
 
 let columnas = [];
@@ -12,6 +15,9 @@ export const HeroesTable = () => {
     pageIndex: 0,
     pageSize: 5,
   });
+
+  const navigate = useNavigate();
+  const location = useLocation();
   
   useEffect(() => {
    obtenerHeroes();
@@ -27,6 +33,11 @@ export const HeroesTable = () => {
     .catch( (error) => {
       console.error(error);
     });
+  };
+
+  const onEditar = (heroId) => {
+    localStorage.setItem('lastPath', location.pathname);
+    navigate(`/hero/${ heroId }`);
   };
 
   const eliminarHeroe = (heroe) => {
@@ -76,10 +87,32 @@ export const HeroesTable = () => {
         Cell: (data) => (
           <span>
             <button
-              className="btn btn-danger btn-sm"
+              className="btn btn-primary btn-sm"
+              onClick={() => onEditar(data.row.original.id) }
+            >
+              <span className=' displayCenter'>
+                <FontAwesomeIcon 
+                  icon={faPen} 
+                  color="white" 
+                  fontSize={15} 
+                  className='me-2' 
+                />
+                Editar
+              </span>
+            </button>
+            <button
+              className="btn btn-danger btn-sm ms-2"
               onClick={() => eliminarHeroe(data.row.original)}
             >
-              Eliminar
+              <span className=' displayCenter'>
+                <FontAwesomeIcon 
+                  icon={faTrashCan} 
+                  color="white" 
+                  fontSize={15} 
+                  className='me-2' 
+                />
+                Eliminar
+              </span>
             </button>
           </span>
         ),
@@ -108,20 +141,22 @@ export const HeroesTable = () => {
       }
       {
         mostrarTable &&
-        <MaterialReactTable
-          columns={ columnas }
-          data={ heroes }
-          muiTableBodyCellProps={{
-            sx: {
-              textAlign: "center"
-            },
-          }}
-          muiTablePaginationProps={{
-            rowsPerPageOptions: [5, 10, 20, 50],
-          }}
-          onPaginationChange={setPagination}
-          state={{ pagination }}
-        />
+        <div className="animate__animated animate__fadeIn animate__slow">
+          <MaterialReactTable
+            columns={ columnas }
+            data={ heroes }
+            muiTableBodyCellProps={{
+              sx: {
+                textAlign: "center"
+              },
+            }}
+            muiTablePaginationProps={{
+              rowsPerPageOptions: [5, 10, 20, 50],
+            }}
+            onPaginationChange={setPagination}
+            state={{ pagination }}
+          />
+        </div>
       }
     </>
   );

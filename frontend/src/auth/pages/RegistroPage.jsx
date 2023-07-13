@@ -6,6 +6,8 @@ import * as yup from 'yup';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 import { simpleAlert } from '../../heroes/helpers/sweetAlert';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 const schema = yup.object().shape({
   nombre: yup.string().required('El campo es obligatorio'),
@@ -106,8 +108,19 @@ export const RegistroPage = () => {
               <div className='displayEnd mb-3' style={{fontWeight:'bold', color:'#7b1fa2'}}>
                 <span className='spanLogin text-end' onClick={()=> navigate('/login')}>Iniciar sesión</span>
               </div>
-              <button type="submit" className="w-100 btn btn-lg btn-primary" disabled={!isValid}>
-                Registrarse
+              <button 
+                type="submit" 
+                className="w-100 btn btn-lg btn-primary" 
+                disabled={!isValid}
+              >
+                <span className=' displayCenter' style={{gap: '16px'}}> 
+                  <FontAwesomeIcon 
+                    icon={faUserPlus} 
+                    color="white"
+                    fontSize={24}  
+                  />
+                  Registrarse
+                </span>
               </button>
             </form>
           </div>

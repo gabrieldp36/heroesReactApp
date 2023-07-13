@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
 
 const schema = yup.object().shape({
   correo: yup.string().required('El campo es obligatorio').email('Ingrese un correo válido'),
@@ -89,8 +91,19 @@ export const LoginPage = () => {
               <div className='displayEnd mb-3' style={{fontWeight:'bold', color:'#7b1fa2'}}>
                 ¡<span className='spanLogin text-end' onClick={()=> navigate('/login/registro')}>Crear cuenta</span>!
               </div>
-              <button type="submit" className="w-100 btn btn-lg btn-primary" disabled={!isValid}>
-                Acceder
+              <button 
+                type="submit" 
+                className="w-100 btn btn-lg btn-primary" 
+                disabled={!isValid}
+              >
+                <span className=' displayCenter' style={{gap: '16px'}}> 
+                  <FontAwesomeIcon 
+                    icon={faRightToBracket} 
+                    color="white"
+                    fontSize={24}  
+                  />
+                  Acceder
+                </span>
               </button>
             </form>
           </div>

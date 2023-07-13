@@ -5,6 +5,8 @@ import Modal from 'react-bootstrap/Modal';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faComment, faPaperPlane, faXmark, } from '@fortawesome/free-solid-svg-icons'
 import { selectImgComentario, toast } from '../helpers';
 import { useRef } from 'react';
 
@@ -23,6 +25,10 @@ export const Comentarios = (props) => {
     const [ comentarioSelecionado, setComentarioSelccionado ] = useState(null);
     const [ cargandoComentarios, setCargandoComentarios ] = useState(false);
     const [ mostrarForm, setMostrarForm ] = useState(false);
+
+    //States-Icons
+    const [overComentar, setOverComentar] = useState(false);
+    const [overEnviar, setOverEnviar] = useState(false);
 
     // refs
     const bodyTop = useRef();
@@ -60,6 +66,7 @@ export const Comentarios = (props) => {
                 await axios.patch('http://localhost:3001/comentarios/' + comentarioSelecionado.id, comentario);
                 setComentarioSelccionado(null);
                 setMostrarForm(!mostrarForm);
+                setOverEnviar(false)
                 renderizarComentrarios(heroeId);
                 resetForm();
                 scrollToTop();
@@ -70,6 +77,7 @@ export const Comentarios = (props) => {
                 comentario.heroeId = heroeId;
                 await axios.post('http://localhost:3001/comentarios', comentario);
                 setMostrarForm(!mostrarForm);
+                setOverEnviar(false)
                 renderizarComentrarios(heroeId);
                 resetForm();
                 scrollToTop();
@@ -203,11 +211,24 @@ export const Comentarios = (props) => {
                     }
                 </div>
                 <button 
-                    className='btn btn-outline-info' 
+                    className='btn btn-outline-info mt-2 mb-1' 
                     onClick={ () => setMostrarForm(!mostrarForm)}
-                >¡Comentar!</button>
+                    onMouseOver={() =>  setOverComentar(true)}
+                    onMouseLeave={() =>  setOverComentar(false)}
+                >
+                                  
+                    <span className=' displayCenter'>
+                        <FontAwesomeIcon 
+                            icon={faComment} 
+                            color={ (overComentar) ? "black" : "#0dcaf0"}
+                            fontSize={20} 
+                            className='me-2' 
+                        />
+                        ¡Comentar!
+                    </span>
+                </button>
                 { mostrarForm &&
-                    <div className='container mb-3'>
+                    <div className='container mb-3' style={{marginTop: '-15px'}}>
                         <div className="row">
                             <div className="col-lg-5 col-md-9 col-sm-12">
                                 <div>
@@ -232,7 +253,15 @@ export const Comentarios = (props) => {
                                             className="btn btn-outline-success mt-2"
                                             type="submit"
                                             disabled={!isValid}
+                                            onMouseOver={() =>  setOverEnviar(true)}
+                                            onMouseLeave={() =>  setOverEnviar(false)}
                                         >
+                                            <FontAwesomeIcon 
+                                                icon={faPaperPlane} 
+                                                color={ (overEnviar) ? "white" : "#198754"}
+                                                fontSize={20} 
+                                                className='me-2' 
+                                            />
                                             Enviar
                                         </button>
                                     </div>
@@ -243,7 +272,19 @@ export const Comentarios = (props) => {
                 }
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Cerrar</Button>
+                <Button 
+                    onClick={props.onHide}
+                >
+                    <span className=' displayCenter'>
+                        <FontAwesomeIcon 
+                            icon={faXmark} 
+                            color="white"
+                            fontSize={20} 
+                            className='me-2' 
+                        />
+                        Cerrar
+                    </span>
+                </Button>
             </Modal.Footer>
         </Modal>
     );
