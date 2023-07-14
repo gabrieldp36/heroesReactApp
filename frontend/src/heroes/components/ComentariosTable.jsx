@@ -183,6 +183,7 @@ export const ComentariosTable = () => {
           <MaterialReactTable
             columns={columnas}
             data={comentarios}
+            enableFullScreenToggle={false}
             muiTableBodyCellProps={{
               sx: {
                 textAlign: "center",

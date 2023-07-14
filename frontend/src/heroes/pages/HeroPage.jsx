@@ -234,24 +234,22 @@ export const HeroPage = () => {
                 </span>
               </button>
             }
-            { mostrarBtns &&
-              <button 
-                className="btn btn-outline-success"
-                onClick={ () => mostrarModalComentarios() }
-                onMouseOver={() =>  setOverComentar(true)}
-                onMouseLeave={() =>  setOverComentar(false)}
-              >
-                <span className=' displayCenter'>
-                  <FontAwesomeIcon 
-                    icon={faComment} 
-                    color={ (overComentar) ? "white" : "#198754"}
-                    fontSize={20} 
-                    className='me-2' 
-                  />
-                  Comentar
-                </span>
-              </button>
-            }
+            <button 
+              className="btn btn-outline-success"
+              onClick={ () => mostrarModalComentarios() }
+              onMouseOver={() =>  setOverComentar(true)}
+              onMouseLeave={() =>  setOverComentar(false)}
+            >
+              <span className=' displayCenter'>
+                <FontAwesomeIcon 
+                  icon={faComment} 
+                  color={ (overComentar) ? "white" : "#198754"}
+                  fontSize={20} 
+                  className='me-2' 
+                />
+                Comentarios
+              </span>
+            </button>
           </div>
             { mostrarForm && 
               <div style={{marginTop:'30px'}} className='col animate__animated animate__fadeIn'>

@@ -63,6 +63,7 @@ export const HeroCard = (heroe) => {
                             className="card-img animate__animated animate__fadeIn" 
                             alt={ heroe.superhero } 
                             onLoad={ onLoad }
+                            onError={() => setMostrarImg(true)}
                             decoding='async'
                         />
                     </div>

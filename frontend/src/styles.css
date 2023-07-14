@@ -118,6 +118,23 @@ button {
     --maximumYellow: #F9BA41;
 }
 
+/**************************NAV BAR*******************************/
+
+.itemBar {
+    font-weight: bold !important;
+}
+.nav-link.itemBar:hover {
+    color: #69f0ae !important;
+}
+
+.active {
+    color: #69f0ae !important;
+}
+
+.itemBarLogut {
+    color: #D92626 !important;
+}
+
 /*************************PERFIL USUARIO*************************/
 .divIMGLogued {
     display: flex; 
@@ -400,21 +417,6 @@ button {
     color: var(--white) !important;
 }
 
-.itemBar {
-    font-weight: bold !important;
-}
-.nav-link.itemBar:hover {
-    color: #69f0ae !important;
-}
-
-.active {
-    color: #69f0ae !important;
-}
-
-.itemBarLogut:hover {
-    color: #D92626 !important;
-}
-
 /***********************MEDIA QUERIES**************************/
 
 @media(max-width: 767px) {
@@ -443,7 +445,6 @@ button {
         color: #5dcebc !important;
     }
     .itemBarLogut {
-        color: #D92626 !important;
         font-weight: 400 !important;
     }
 }

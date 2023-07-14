@@ -44,7 +44,7 @@ export const SearchPage = () => {
   };
 
   return (
-    <div className='mb-4 animate__animated animate__fadeIn'>
+    <div className='mb-4 animate__animated animate__fadeIn minHeight'>
       <h1>Buscador</h1> 
       <hr />
 

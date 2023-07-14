@@ -1,7 +1,8 @@
 {
   "name": "heroes-spa",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": "Gabriel Domínguez Prado",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -145,6 +145,7 @@ export const HeroesTable = () => {
           <MaterialReactTable
             columns={ columnas }
             data={ heroes }
+            enableFullScreenToggle={false}
             muiTableBodyCellProps={{
               sx: {
                 textAlign: "center"

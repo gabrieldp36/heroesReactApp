@@ -142,6 +142,7 @@ export const UsuariosTable = () => {
           <MaterialReactTable
             columns={ columnas }
             data={users}
+            enableFullScreenToggle={false}
             muiTableBodyCellProps={{
               sx: {
                 textAlign: "center"

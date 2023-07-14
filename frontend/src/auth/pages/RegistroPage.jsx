@@ -12,9 +12,24 @@ import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 const schema = yup.object().shape({
   nombre: yup.string().required('El campo es obligatorio'),
   correo: yup.string().required('El campo es obligatorio').email('Ingrese un correo válido'),
-  password: yup.string().required('El campo es obligatorio'),
+  password: yup.string().required('El campo es obligatorio').passwordValidation('La contraseña debe contener mínimo 8 caractéres, al menos una letra mayúscula, una letra minúscula y un número.'),
 });
 
+// Custom validator
+yup.addMethod(yup.string, "passwordValidation", function (errorMessage) {
+  return this.test(`password-test`, errorMessage, function (value) {
+      if(!value) {
+          return true;
+      } else {
+          const { path, createError } = this;
+          const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+          return (
+            (regExp.test(value)) ||
+            createError({ path, message: errorMessage })
+          );
+      };
+  });
+});
 
 export const RegistroPage = () => {
 
@@ -43,13 +58,14 @@ export const RegistroPage = () => {
     <div 
       style=
       {{
-        width:'100vw', 
+        width:'auto',
         height:'100vh', 
+        minHeight: '700px',
         display:'grid',
         placeItems: 'center',
         background: "url('/assets/bg-login.jpg')",
         backgroundSize: "cover",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div 

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../auth/context/AuthContext';
 import Container from 'react-bootstrap/Container';
@@ -7,15 +7,27 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { confirmAlert, selectPerfil } from '../../heroes/helpers';
 
+const ocultarCanvas = (id) => {
+  const body = document.getElementById(id);
+  if(body) {
+    new ResizeObserver(() => {
+      const offCanvas = document.getElementById('offcanvasNavbar');
+      const btnToggle = document.getElementById('btnToggleNavBar');
+      if(offCanvas && btnToggle) {
+        let offsetWidth =  body.offsetWidth;
+        if(offsetWidth >= 970 && offCanvas.classList.contains('show')) {
+          btnToggle.click();
+        };
+      }
+    }).observe(body);
+  };
+};
+ocultarCanvas('root');
+
 export const NavbarComponent = () => {
 
   const { user, logout } = useContext( AuthContext );
   const navigate = useNavigate();
-
-  useEffect(() => {
-    ocultarCanvas('root');
-  }, []);
-
 
   const onLogout = () => {
     confirmAlert(`Está por salir de la aplicación`, 'question', 'top-end')
@@ -34,24 +46,6 @@ export const NavbarComponent = () => {
     const btnToggle = document.getElementById('btnToggleNavBar');
     if(offCanvas.classList.contains('show')) {
       btnToggle.click();
-    };
-  };
-
-  const ocultarCanvas = (id) => {
-    const body = document.getElementById(id);
-    if(body) {
-      const outputsize = () => {
-        setTimeout(() => {
-          const offCanvas = document.getElementById('offcanvasNavbar');
-          const btnToggle = document.getElementById('btnToggleNavBar');
-          let offsetWidth =  body.offsetWidth;
-          if(offsetWidth >= 970 && offCanvas.classList.contains('show')) {
-            btnToggle.click();
-          };
-        }, 10);
-      };
-      outputsize();
-      new ResizeObserver(outputsize).observe(body);
     };
   };
 
