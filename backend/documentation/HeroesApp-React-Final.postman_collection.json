@@ -298,13 +298,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/heroes/3",
+							"raw": "{{url}}/heroes/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"heroes",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -501,14 +501,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/comentarios/heroe/3",
+							"raw": "{{url}}/comentarios/heroe/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"comentarios",
 								"heroe",
-								"3"
+								"1"
 							]
 						}
 					},
