@@ -3,9 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen, faTrashCan, faLeftLong, faComment } from '@fortawesome/free-solid-svg-icons'
 import { confirmAlert, deleteHeroe, getHeroById, selectImg, simpleAlert, toast } from '../helpers';
-import { Comentarios, FormularioHeroe } from '../components';
+import { Comentarios, ModalEditarHeroes } from '../components';
 import { AuthContext } from '../../auth/context/AuthContext';
-
 
 export const HeroPage = () => {
 
@@ -20,6 +19,7 @@ export const HeroPage = () => {
   const [mostrarImg, setMostrarImg] = useState(false);
   const [mostrarBtns, setMostrarBtns] = useState(false);
   const [ modalShow, setModalShow ] = useState(false);
+  const [ modalShowEdit, setModalShowEdit ] = useState(false);
 
   //States-Icons
   const [overEdit, setOverEdit] = useState(false);
@@ -27,15 +27,14 @@ export const HeroPage = () => {
   const [overRegresar, setOverRegresar] = useState(false);
   const [overComentar, setOverComentar] = useState(false);
 
-  // refs
-  const bodyTop = useRef();
-
+  // modales
   const mostrarModalComentarios = () => {
     setModalShow(true); 
   };
 
-  // Ocultar/Mostrar formulario.
-  const [ mostrarForm, setMostrarForm ] = useState(false);
+  const mostrarModalEdicion = () => {
+    setModalShowEdit(true);
+  };
 
   useEffect(() => {
     mostrarHeroe(id);
@@ -47,11 +46,6 @@ export const HeroPage = () => {
   // Btn regresar
   const onNavigateBack = () => {
     navigateBack();
-  };
-
-  // Mostrar ocultar formulario.
-  const btnToogle = () => {
-    setMostrarForm(!mostrarForm);
   };
 
   // spinner imagen.
@@ -129,19 +123,8 @@ export const HeroPage = () => {
     };
   };
 
-  const scrollTop = () => {
-    scrollToTop();
-  };
-
-  const scrollToTop = () => {
-    setTimeout(() => {
-      bodyTop.current?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  };
-
   return (
     <>
-      <div ref={bodyTop}></div>
       <div className="row mt-5 minHeightHeroPage" style={{marginBottom:'45px'}}>
         <div className="col-4">
           {
@@ -197,7 +180,40 @@ export const HeroPage = () => {
                 Regresar
               </span>
             </button>
-
+            <button 
+              className="btn btn-outline-success"
+              onClick={ () => mostrarModalComentarios() }
+              onMouseOver={() =>  setOverComentar(true)}
+              onMouseLeave={() =>  setOverComentar(false)}
+            >
+              <span className=' displayCenter'>
+                <FontAwesomeIcon 
+                  icon={faComment} 
+                  color={ (overComentar) ? "white" : "#198754"}
+                  fontSize={20} 
+                  className='me-2' 
+                />
+                Comentarios
+              </span>
+            </button>
+            { mostrarBtns &&
+              <button 
+                className="btn btn-outline-info"
+                onClick={ () => mostrarModalEdicion() }
+                onMouseOver={() =>  setOverEdit(true)}
+                onMouseLeave={() =>  setOverEdit(false)}
+              >
+                <span className=' displayCenter'>
+                  <FontAwesomeIcon 
+                    icon={faPen} 
+                    color={ (overEdit) ? "black" : "#0dcaf0"}
+                    fontSize={20} 
+                    className='me-2' 
+                  />
+                  Editar
+                </span>
+              </button>
+            }
             { mostrarBtns &&
               <button 
                 className="btn btn-outline-danger"
@@ -216,50 +232,14 @@ export const HeroPage = () => {
                 </span>
               </button>
             }
-            { mostrarBtns &&
-              <button 
-                className="btn btn-outline-info"
-                onClick={ () => btnToogle() }
-                onMouseOver={() =>  setOverEdit(true)}
-                onMouseLeave={() =>  setOverEdit(false)}
-              >
-                <span className=' displayCenter'>
-                  <FontAwesomeIcon 
-                    icon={faPen} 
-                    color={ (overEdit) ? "black" : "#0dcaf0"}
-                    fontSize={20} 
-                    className='me-2' 
-                  />
-                  Editar
-                </span>
-              </button>
-            }
-            <button 
-              className="btn btn-outline-success"
-              onClick={ () => mostrarModalComentarios() }
-              onMouseOver={() =>  setOverComentar(true)}
-              onMouseLeave={() =>  setOverComentar(false)}
-            >
-              <span className=' displayCenter'>
-                <FontAwesomeIcon 
-                  icon={faComment} 
-                  color={ (overComentar) ? "white" : "#198754"}
-                  fontSize={20} 
-                  className='me-2' 
-                />
-                Comentarios
-              </span>
-            </button>
           </div>
-            { mostrarForm && 
-              <div style={{marginTop:'30px'}} className='col animate__animated animate__fadeIn'>
-                <FormularioHeroe 
-                  heroeSeleccionado = { heroe }  
-                  onCambio={ mostrarHeroe } 
-                  mostrarForm={ setMostrarForm }
-                  scrollToTop = { scrollTop }
-                />
-              </div>
+            { modalShowEdit && 
+              <ModalEditarHeroes 
+                show = { modalShowEdit }
+                heroeSelect = { heroe }  
+                onCambioEdit ={ mostrarHeroe }
+                onHide = {() => setModalShowEdit(false)}
+              />
             }
             { modalShow &&
               <Comentarios

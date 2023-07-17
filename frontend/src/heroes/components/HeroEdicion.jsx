@@ -23,7 +23,7 @@ export function FormularioHeroe (props) {
 
   const { user } = useContext( AuthContext );
 
-  const { heroeSeleccionado, onCambio, mostrarForm, scrollToTop } = props;
+  const { heroeSeleccionado, onCambio, onHide} = props;
   const { register, handleSubmit, setValue, clearErrors, formState: { errors, isValid } } = useForm({
     resolver: yupResolver(schema),
     mode: 'all',
@@ -68,8 +68,7 @@ export function FormularioHeroe (props) {
         limpiarForm(); // Luego de actualizar el héroe, limpiamos el formulario.
         onCambio(heroeSeleccionado.id); // graficamos en pantalla los cambios.
         setGuardando(false);
-        mostrarForm(false);
-        scrollToTop();
+        onHide();
       })
       .catch((error) => {
         console.log(error);

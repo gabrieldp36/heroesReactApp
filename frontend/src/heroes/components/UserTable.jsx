@@ -81,7 +81,7 @@ export const UsuariosTable = () => {
         accessorKey: "id",
         header: "Acciones",
         Cell: (data) => (
-          <span>
+          <span className="displayCenter" style={{gap: '8px'}}>
             <button
               className="btn btn-primary btn-sm"
               disabled = {data.row.original.estado == true}
@@ -98,7 +98,7 @@ export const UsuariosTable = () => {
               </span>
             </button>
             <button
-              className="btn btn-danger btn-sm ms-2"
+              className="btn btn-danger btn-sm"
               disabled = {data.row.original.estado == false}
               onClick={() => bloquearUsuario(data.cell.getValue())}
             >

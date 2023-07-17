@@ -212,7 +212,7 @@ export const Comentarios = (props) => {
                 </div>
                 <button 
                     className='btn btn-outline-info mt-2 mb-1' 
-                    onClick={ () => setMostrarForm(!mostrarForm)}
+                    onClick={ () => { setMostrarForm(!mostrarForm); scrollToBottom(); } }
                     onMouseOver={() =>  setOverComentar(true)}
                     onMouseLeave={() =>  setOverComentar(false)}
                 >
@@ -222,7 +222,7 @@ export const Comentarios = (props) => {
                             icon={faComment} 
                             color={ (overComentar) ? "black" : "#0dcaf0"}
                             fontSize={20} 
-                            className='me-2' 
+                            className='me-2'
                         />
                         ¡Comentar!
                     </span>

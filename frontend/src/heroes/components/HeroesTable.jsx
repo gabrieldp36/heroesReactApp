@@ -85,7 +85,7 @@ export const HeroesTable = () => {
       {
         header: "Acciones",
         Cell: (data) => (
-          <span>
+          <span className="displayCenter" style={{gap: '8px'}}>
             <button
               className="btn btn-primary btn-sm"
               onClick={() => onEditar(data.row.original.id) }
@@ -101,7 +101,7 @@ export const HeroesTable = () => {
               </span>
             </button>
             <button
-              className="btn btn-danger btn-sm ms-2"
+              className="btn btn-danger btn-sm"
               onClick={() => eliminarHeroe(data.row.original)}
             >
               <span className=' displayCenter'>
